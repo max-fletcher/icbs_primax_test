@@ -19,5 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/index', [\App\Http\Controllers\TestController::class, 'index']);
-
 Route::post('/generate_report', [\App\Http\Controllers\TestController::class, 'generate_report']);
