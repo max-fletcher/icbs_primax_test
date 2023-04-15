@@ -209,10 +209,33 @@
    }
    // END GENERATE REPORT
 
+   // DOWNLOAD PDF
+
    const downloadPDF = () => {
-      const url = config.public.baseURL + '/icbs_primax_test'
-      window.location.href = url;
+      // const url = config.public.baseURL + '/icbs_primax_test'
+      // window.location.href = url;
+
+      $fetch(`/api/download_pdf`, {
+         baseURL: config.public.baseURL,
+         method: 'POST',
+         body: formData,
+         headers: {
+            responseType: 'blob'
+         }
+      }).then(response => {
+         const url = window.URL.createObjectURL(new Blob([response]));
+         const link = document.createElement('a');
+         link.href = url;
+         link.setAttribute('download', 'icbs_primax_test.pdf');
+         document.body.appendChild(link);
+         link.click();
+
+         // var file = window.URL.createObjectURL(response);
+         // window.location.assign(file);
+      })
    }
+
+   // END DOWNLOAD PDF
 </script>
 
 <style scoped>

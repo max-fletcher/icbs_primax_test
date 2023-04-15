@@ -1,2 +1,20 @@
-<h1>{{ $some_data }}</h1>
-<h6>{{ $some_data_2 }}</h6>
+<table>
+   <thead>
+      <tbody>
+         @foreach ($filtered_rows as $row)
+            <tr>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+            </tr>
+         @endforeach
+         <tr></tr>
+      </tbody>
+   </thead>
+</table>
