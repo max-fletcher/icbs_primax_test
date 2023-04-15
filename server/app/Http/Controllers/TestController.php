@@ -43,6 +43,8 @@ class TestController extends Controller
                 $row_lot_mm = explode(':', $row['last_out_time'])[1];
             }
 
+            // dd($row_fit_hh > $request->fit_hh, $row_fit_hh, $request->fit_hh);
+
             if((isset($request->fit_hh) && isset($request->fit_mm))){
                 if($row_fit_hh > $request->fit_hh || ($row_fit_hh == $request->fit_hh && $row_fit_mm > $request->fit_mm)){
                     $filtered_rows[$key]['bg_color'] = 'red';
@@ -118,7 +120,11 @@ class TestController extends Controller
 
         $path = public_path() . '/pdf/' . 'icbs_primax_test' . '.pdf';
 
-        $pdf = Pdf::loadView('dom_pdf.testpdf', $filtered_rows);
+        $data = [
+            'filtered_rows' => $filtered_rows,
+        ];
+
+        $pdf = Pdf::loadView('dom_pdf.testpdf', $data);
         $pdf->save($path);
 
         return response()->download($path);

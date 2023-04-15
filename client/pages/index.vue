@@ -48,7 +48,7 @@
                   </thead>
                   <tbody>
                      <!-- :class="{ 'bg-green' :  generate, 'bg-red' : }" -->
-                     <tr v-for="(data, index) in excel_data.data" :key="data.id" class="border-b bg-white" :class="{ 'bg-red-400' : data.bg_color === 'red', 'bg-yellow-300' : data.bg_color === 'yellow' }">
+                     <tr v-for="(data, index) in excel_data.data" :key="data.id" class="border-b" :class="{ 'bg-white' : data.bg_color == undefined, 'bg-red-400' : data.bg_color === 'red', 'bg-yellow-300' : data.bg_color === 'yellow' }">
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ index }}</td>
                         <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                            {{ data.month }}
@@ -114,10 +114,9 @@
          </div>
 
          <div class="mx-2">
-            <label for="price" class="block text-sm font-medium leading-6 text-gray-900">Last Time Out</label>
+            <label for="price" class="block text-sm font-medium leading-6 text-gray-900">Employee ID</label>
             <div class="relative mt-2 rounded-md shadow-sm">
                <input v-model="employee_id" @keyup="new_func" type="text" name="price" id="price"
-                     placeholder="00:00"
                      class="block w-full rounded-md border-0 py-1.5 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
             </div>
          </div>
